@@ -27,8 +27,8 @@ public class QuaternionAngle {
 
   public double getAngle(Point after, Point axisOfInterest) {
     // axisOfInterest - unit vector, either for X = (1, 0, 0), Y = (0, 1, 0), Z = (0, 0, 1)
-    // we are interested how much the rotation was on this axis (e.g., if it was pointing to the wall and now is pointing to the ceiling => 90 degrees)
-    return Math.acos(after.getX() * axisOfInterest.getX() + after.getY() * axisOfInterest.getY() + after.getZ() * axisOfInterest.getZ());
+    // we are interested how much the coordinate changed on this axis (e.g., if it was pointing to the wall and now is pointing to the ceiling => 90 degrees)
+    return -Math.asin(after.getX() * axisOfInterest.getX() + after.getY() * axisOfInterest.getY() + after.getZ() * axisOfInterest.getZ());
   }
 
 }
