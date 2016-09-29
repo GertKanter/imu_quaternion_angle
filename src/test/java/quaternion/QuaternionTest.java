@@ -30,9 +30,12 @@ public class QuaternionTest {
 
     Quaternion rotation = new Quaternion(Math.cos(angle / 2), 0, Math.sin(angle / 2), 0); // this is the new position of the IMU (i.e., live reading) - in this case, we rotate it to point up 0.5 rads
     Point rotatedPoint = qa.rotatePoint(new Point(1, 0, 0), rotation); // rotating a point on X axis 0.5 rads around Y-axis
-    System.out.println(rotatedPoint);
-    Assert.assertEquals(qa.getAngle(rotatedPoint, new Point(0, 0, 1)), angle, 0.01);
-
+    Assert.assertEquals(Math.abs(qa.getAngle(rotatedPoint, new Point(0, 0, 1))), angle, 0.01);
   }
   
+  @Test(timeOut=100)
+  public void testCompoundRotation() {
+    // 30 deg around Y, then 30 around Z, then 30 around X
+
+  }
 }
